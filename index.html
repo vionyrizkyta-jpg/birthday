@@ -300,3 +300,18 @@ if(!name || !message) return;
 let data =
 JSON.parse(
 localStorage.getItem
+  <h2>Guest Book</h2>
+
+<form name="guestbook" method="POST" data-netlify="true">
+
+  <input type="hidden" name="form-name" value="guestbook">
+
+  <input type="text" name="nama" placeholder="Nama kamu" required>
+  <br><br>
+
+  <textarea name="pesan" placeholder="Pesan kamu" required></textarea>
+  <br><br>
+
+  <button type="submit">Kirim</button>
+
+</form>
