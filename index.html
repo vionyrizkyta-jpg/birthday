@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Handhi Mahendra Hastama</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Parisienne&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(180deg,#fff8fb,#ffeef5,#fff);
+overflow-x:hidden;
+color:#6d4b58;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.card{
+max-width:900px;
+width:100%;
+background:white;
+padding:20px;
+border-radius:30px;
+box-shadow:0 10px 35px rgba(255,170,200,.25);
+text-align:center;
+}
+
+.main-photo{
+width:100%;
+border-radius:25px;
+border:8px solid #ffe4ef;
+}
+
+h1{
+font-family:'Parisienne',cursive;
+font-size:4rem;
+color:#ff7bab;
+margin-top:20px;
+}
+
+.date{
+margin-top:10px;
+color:#9c7082;
+}
+
+.message{
+margin-top:25px;
+padding:20px;
+background:#fff8fc;
+border-radius:20px;
+line-height:1.9;
+}
+
+.spotify{
+margin-top:30px;
+}
+
+.gift-box{
+font-size:90px;
+cursor:pointer;
+margin-top:25px;
+}
+
+.gift-message{
+display:none;
+margin-top:15px;
+font-weight:600;
+color:#ff5f98;
+}
+  button{
+background:#ff9fc4;
+color:white;
+border:none;
+padding:12px 24px;
+border-radius:12px;
+margin-top:12px;
+cursor:pointer;
+font-weight:600;
+}
+
+button:hover{
+background:#ff85b4;
+}
+
+.guestbook{
+margin-top:30px;
+text-align:left;
+}
+
+.guestbook input,
+.guestbook textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:12px;
+border:1px solid #ffd2e3;
+}
+
+.entry{
+background:#fff6fa;
+padding:12px;
+border-radius:12px;
+margin-top:12px;
+}
+
+.heart{
+position:fixed;
+font-size:20px;
+pointer-events:none;
+animation:floatUp 8s linear infinite;
+opacity:.7;
+z-index:999;
+}
+
+@keyframes floatUp{
+from{
+transform:translateY(100vh);
+opacity:0;
+}
+to{
+transform:translateY(-100px);
+opacity:1;
+}
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:2.8rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="card">
+
+<!-- GANTI photo.jpg DENGAN FOTO KOLASE -->
+<img src="handhi.jpg" class="main-photo">
+
+<h1>Happy Birthday Handhi Mahendra Hastama 🎂</h1>
+
+<p class="date">17 July 2008</p>
+
+<div class="message">
+
+Untuk Handhi Mahendra Hastama,
+<br><br>
+
+Hari ini usiamu bertambah, dan semoga segala hal baik ikut bertambah bersamanya.
+Semoga yang kamu usahakan menemukan hasil terbaiknya,
+yang kamu doakan menemukan waktunya,
+dan yang kamu khawatirkan perlahan berubah menjadi ketenangan.
+<br><br>
+
+Terima kasih sudah menjadi seseorang yang berarti.
+Semoga hari ini dan hari-hari setelahnya selalu memberi alasan untuk tersenyum.
+<br><br>
+
+Selamat ulang tahun ❤️
+<br><br>
+
+<b>
+With Love,<br>
+Viony Rizkyta Anjany 💕
+</b>
+
+</div>
+
+<div class="spotify">
+
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/14IG2jW0gvjKIgfJHBc7c7"
+width="100%"
+height="152"
+frameborder="0">
+</iframe>
+
+</div>
+
+<div class="gift-box" onclick="openGift()">
+🎁
+</div>
+
+<div id="giftMessage" class="gift-message">
+✨ Semoga semua impian dan harapanmu tercapai. Happy Birthday Handhi! ✨
+</div>
+<div class="guestbook">
+
+<h2>💌 Guestbook</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Nama">
+
+<textarea
+id="message"
+rows="4"
+placeholder="Tulis ucapan..."></textarea>
+
+<button onclick="saveMessage()">
+Kirim Ucapan
+</button>
+
+<div id="guestEntries"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+window.onload = () => {
+
+confetti({
+particleCount:250,
+spread:180,
+origin:{y:0.6}
+});
+
+launchFireworks();
+
+loadMessages();
+
+createHearts();
+
+};
+
+function launchFireworks(){
+
+setInterval(()=>{
+
+confetti({
+particleCount:100,
+angle:60,
+spread:80,
+origin:{x:0}
+});
+
+confetti({
+particleCount:100,
+angle:120,
+spread:80,
+origin:{x:1}
+});
+
+},3000);
+
+}
+
+function openGift(){
+
+document
+.getElementById('giftMessage')
+.style.display='block';
+
+confetti({
+particleCount:300,
+spread:200
+});
+
+}
+
+function saveMessage(){
+
+let name =
+document.getElementById('name').value;
+
+let message =
+document.getElementById('message').value;
+
+if(!name || !message) return;
+
+let data =
+JSON.parse(
+localStorage.getItem
